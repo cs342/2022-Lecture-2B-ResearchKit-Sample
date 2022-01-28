@@ -61,6 +61,17 @@ struct SurveyViewController: UIViewControllerRepresentable {
             
             steps += [booleanQuestionStep]
             
+            // answer value format
+            let monthArray = [
+                ORKTextChoice(text: "January", value: 0 as NSCoding & NSCopying & NSObjectProtocol),
+                ORKTextChoice(text: "February", value: 1 as NSCoding & NSCopying & NSObjectProtocol),
+                ORKTextChoice(text: "March", value: 2 as NSCoding & NSCopying & NSObjectProtocol)
+            ]
+            let valuePickerFormat = ORKValuePickerAnswerFormat(textChoices: monthArray)
+            let valuePickerFormatStep = ORKQuestionStep(identifier: "ValuePickerStep", title: nil, question: "Select a month in which these symptoms have been occuring in", answer: valuePickerFormat)
+            
+            steps += [valuePickerFormatStep]
+            
             //SUMMARY
             let summaryStep = ORKCompletionStep(identifier: "SummaryStep")
             summaryStep.title = "Thank you."
